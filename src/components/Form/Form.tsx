@@ -4,37 +4,37 @@ import styles from "../Form/Form.module.css"
 import { Search } from "../../types";
 import Alert from "../Alert/Alert";
 
-type FormProps={
-    fetchWeather:(search:Search)=>Promise<void>
-    
+type FormProps = {
+    fetchWeather: (search: Search) => Promise<void>
+
 }
 
-export default function Form({fetchWeather}: FormProps) {
+export default function Form({ fetchWeather }: FormProps) {
 
     const [search, setSearch] = useState<Search>({
         city: "",
         country: ""
     })
-    const [alert,setAlert]=useState("")
-   
+    const [alert, setAlert] = useState("")
+
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 
         setSearch({
             ...search,
             [e.target.id]: e.target.value
         })
-        
+
 
     }
 
-    const handleSubmit=(e:FormEvent<HTMLFormElement>)=>{
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if(Object.values(search).includes("")){
+        if (Object.values(search).includes("")) {
             setAlert("Todos los Campos son obligatorios")
             return
         }
         fetchWeather(search)
-    
+
     }
 
 
@@ -51,6 +51,9 @@ export default function Form({fetchWeather}: FormProps) {
                     value={search.city}
                     onChange={handleChange}
                 />
+            </div>
+
+            <div className={styles.field}>
                 <label htmlFor="country">Pais:</label>
                 <select
                     id="country"
@@ -68,8 +71,8 @@ export default function Form({fetchWeather}: FormProps) {
                         ))
                     }
                 </select>
-            </div>
 
+            </div>
             <input className={styles.submit} type="submit" value={"Consultar Clima"} />
 
         </form>

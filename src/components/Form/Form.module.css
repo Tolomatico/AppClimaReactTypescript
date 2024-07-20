@@ -6,7 +6,7 @@
 }
 
 .form input[type="text"],
-.form select{
+.form select {
     padding: 1rem;
     background-color: transparent;
     border: .3rem solid var(--white);
@@ -17,8 +17,13 @@
     
 }
 
+.form option {
+    color: #333;
+    background-color: transparent;
+}
+
 .field ::placeholder{
-    color: var(--white);
+    color:var(--white);
 }
 
 .submit{
